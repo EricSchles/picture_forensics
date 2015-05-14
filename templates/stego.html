@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+
+<form action="" method=post enctype=multipart/form-data>
+      <p>Image to hide data in:<input type="file" name="image" required></p>
+      <p>Data to hide:<input type="text" name="data"></p>
+      <p>Hide:<input type="radio" name="hide_retrieve" value="hide" checked></p>
+      <p>Retrieve:<input type="radio" name="hide_retrieve" value="retrieve"></p>
+      <p><input type="submit"></p>
+      
+</form>
+
+{% if retrieved_data %}
+	<p>Text data embedded in image:</p>
+	<p>{{retrieved_data}}</p>
+{% endif %}
+</body>
+</html>

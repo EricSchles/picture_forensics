@@ -1,0 +1,29 @@
+import Image
+import exifread
+
+def exif_preserve(img_name,new_path=''):
+    img = Image.open(img_name)
+    try:
+        exif = img.info['exif']
+    except KeyError:
+        return "no exif"
+    if new_path == '':
+        img.save(img_name.filename,exif=exif)
+    else:
+        img.save(new_path,exif=exif)
+    return "success"
+
+def exif_strip(img_path,new_path=''):
+    img = Image.open(img_path)
+    if new_path == '':
+        new_img_path = "stripped"+img_path
+    else:
+        new_img_path = new_path
+    img.save(new_img_path)
+    return new_img_path
+
+def exif_enumerate(img_path):
+    f = open(img_path,"rb")
+    tags = exifread.process_file(f)
+    return str(tags)
+

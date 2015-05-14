@@ -1,0 +1,13 @@
+from LSBSteg import LSBSteg
+import cv
+#Hide
+string = "Hello there"
+carrier = cv.LoadImage("Moon.jpg")
+steg = LSBSteg(carrier)
+steg.hideText(string)
+steg.saveImage("hidden.png")
+
+#retrieve
+im = cv.LoadImage("hidden.png")
+steg2 = LSBSteg(im)
+print steg2.unhideText()
